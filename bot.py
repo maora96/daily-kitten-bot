@@ -53,6 +53,3 @@ def tweet_image():
 
 
 tweet_image()
-
-#api.update_status('heyo from the bot @nyphren', )
-#api.update_with_media("images/" + filename, "here's your daily cat pic!")
