@@ -32,26 +32,16 @@ response = requests.get("https://api.thecatapi.com/v1/images/search", params = r
 img_url = response.json()[0]['url']
 filename = img_url.split("/")[-1]
 
-def dl_jpg(url, file_name):
-    full_path = file_name
-    urllib.request.urlretrieve(url, full_path)
+def tweet(url, message):
+    request = requests.get(url, stream=True)
+    if request.status_code == 200:
+        with open(filename, 'wb') as image:
+            for chunk in request:
+                image.write(chunk)
+        
+        api.update_with_media(filename, status=message)
+        os.remove(filename) 
+    else:
+        print("unable to download image")
 
-req = urllib.request.build_opener()
-req.addheaders = [{'User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64)'}]
-urllib.request.install_opener(req)
-
-
-dl_jpg(img_url, filename)
-
-def tweet_image():
-    interval = 60 * 5
-    
-    
-
-    while True:
-        print('tweeting kitty pic')
-        api.update_with_media(filename, "here's a kitten <3")
-        time.sleep(interval)
-
-
-tweet_image()
+tweet(img_url, "kitty pic!")
