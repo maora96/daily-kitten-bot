@@ -5,14 +5,14 @@ import urllib.request
 import time
 import config
 
-consumer_key = config.api_key
-consumer_secret = config.api_secret
+api_key = config.api_key
+api_secret = config.api_secret
 
-key = config.access_token
-secret = config.token_secret
+access_token = config.access_token
+token_secret = config.token_secret
 
-auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
-auth.set_access_token(key, secret)
+auth = tweepy.OAuthHandler(api_key, api_secret)
+auth.set_access_token(access_token, token_secret)
 
 api = tweepy.API(auth)
 
@@ -42,7 +42,7 @@ urllib.request.install_opener(req)
 dl_jpg(img_url, "images/", filename)
 
 def tweet_image():
-    interval = 60 * 60 * 3
+    interval = 60 * 60 * 5
     
     
 
