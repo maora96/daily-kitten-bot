@@ -4,14 +4,15 @@ import random
 import urllib.request
 import time
 import config
-import os 
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
+api_key = os.environ.get("api_key")
+api_secret = os.environ.get("api_secret")
 
-api_key = config.api_key
-api_secret = config.api_secret
-
-access_token = config.access_token
-token_secret = config.token_secret
+access_token = os.environ.get("access_token")
+token_secret = os.environ.get("token_secret")
 
 auth = tweepy.OAuthHandler(api_key, api_secret)
 auth.set_access_token(access_token, token_secret)
