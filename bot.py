@@ -3,7 +3,6 @@ import requests
 import random
 import urllib.request
 import time
-import config
 import os
 from dotenv import load_dotenv
 load_dotenv()
