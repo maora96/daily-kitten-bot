@@ -50,7 +50,7 @@ def tweet_image():
 
     while True:
         print('tweeting kitty pic')
-        api.update_with_media("images/" + filename, "here's a kitten <3")
+        api.update_with_media(filename, "here's a kitten <3")
         time.sleep(interval)
 
 
