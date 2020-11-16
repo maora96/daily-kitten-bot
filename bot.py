@@ -44,4 +44,4 @@ def tweet(url, message):
     else:
         print("unable to download image")
 
-tweet(img_url, "kitten pic!")
+tweet(img_url, "kitten pic! <3")
