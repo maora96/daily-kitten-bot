@@ -44,7 +44,7 @@ urllib.request.install_opener(req)
 dl_jpg(img_url, "images/", filename)
 
 def tweet_image():
-    interval = 60 * 60 * 4
+    interval = 60 * 5
     
     
 
