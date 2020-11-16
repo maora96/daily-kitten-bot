@@ -4,6 +4,8 @@ import random
 import urllib.request
 import time
 import config
+import os 
+
 
 api_key = config.api_key
 api_secret = config.api_secret
@@ -42,7 +44,7 @@ urllib.request.install_opener(req)
 dl_jpg(img_url, "images/", filename)
 
 def tweet_image():
-    interval = 60 * 60 * 3
+    interval = 60 * 60 * 4
     
     
 
