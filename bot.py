@@ -32,8 +32,8 @@ response = requests.get("https://api.thecatapi.com/v1/images/search", params = r
 img_url = response.json()[0]['url']
 filename = img_url.split("/")[-1]
 
-def dl_jpg(url, file_path, file_name):
-    full_path = file_path + file_name
+def dl_jpg(url, file_name):
+    full_path = file_name
     urllib.request.urlretrieve(url, full_path)
 
 req = urllib.request.build_opener()
@@ -41,7 +41,7 @@ req.addheaders = [{'User-Agent', 'Mozilla/5.0 (Windows NT 6.1; WOW64)'}]
 urllib.request.install_opener(req)
 
 
-dl_jpg(img_url, "images/", filename)
+dl_jpg(img_url, filename)
 
 def tweet_image():
     interval = 60 * 5
