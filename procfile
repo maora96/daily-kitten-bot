@@ -1,1 +1,1 @@
-worker: python daily-kittens.py
+worker: python bot.py
