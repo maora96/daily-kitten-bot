@@ -37,15 +37,19 @@ img_url = response.json()[0]['url']
 filename = img_url.split("/")[-1]
 
 def tweet(url, message):
-    request = requests.get(url, stream=True)
-    if request.status_code == 200:
-        with open(filename, 'wb') as image:
-            for chunk in request:
-                image.write(chunk)
-        
-        api.update_with_media(filename, status=message)
-        os.remove(filename) 
-    else:
-        print("unable to download image")
+    interval = 60 * 5
+    
+    while True:
+        request = requests.get(url, stream=True)
+        if request.status_code == 200:
+            with open(filename, 'wb') as image:
+                for chunk in request:
+                    image.write(chunk)
+            
+            api.update_with_media(filename, status=message)
+            os.remove(filename) 
+            time.sleep(interval)
+        else:
+            print("unable to download image")
 
 tweet(img_url, "kitten pic!! <3")
