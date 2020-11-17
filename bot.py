@@ -18,6 +18,10 @@ auth.set_access_token(access_token, token_secret)
 
 api = tweepy.API(auth)
 
+headers = {
+    'Content-Type': 'application/json',
+    'x-api-key': 'fd495732-c452-43e2-89fa-047521c950ef'
+}
 
 para = [
     {
@@ -28,7 +32,7 @@ para = [
     }
 ]
 
-response = requests.get("https://api.thecatapi.com/v1/images/search", params = random.choice(para))
+response = requests.get("https://api.thecatapi.com/v1/images/search", params = random.choice(para), headers=headers)
 img_url = response.json()[0]['url']
 filename = img_url.split("/")[-1]
 
