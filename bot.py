@@ -34,7 +34,7 @@ para = [
 
 
 def tweet(message):
-    interval = 60 * 60 * 5
+    interval = 60 * 2
     
     while True:
         response = requests.get("https://api.thecatapi.com/v1/images/search", params = random.choice(para), headers=headers)
