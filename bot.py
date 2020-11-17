@@ -52,4 +52,4 @@ def tweet(message):
         else:
             print("unable to download image")
 
-tweet("kitten pic!! <3")
+tweet("kitten pic! <3")
