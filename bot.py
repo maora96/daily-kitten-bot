@@ -32,15 +32,15 @@ para = [
     }
 ]
 
-response = requests.get("https://api.thecatapi.com/v1/images/search", params = random.choice(para), headers=headers)
-img_url = response.json()[0]['url']
-filename = img_url.split("/")[-1]
 
-def tweet(url, message):
-    interval = 60 * 5
+def tweet(message):
+    interval = 60 * 60 * 5
     
     while True:
-        request = requests.get(url, stream=True)
+        response = requests.get("https://api.thecatapi.com/v1/images/search", params = random.choice(para), headers=headers)
+        img_url = response.json()[0]['url']
+        filename = img_url.split("/")[-1]
+        request = requests.get(img_url, stream=True)
         if request.status_code == 200:
             with open(filename, 'wb') as image:
                 for chunk in request:
@@ -52,4 +52,4 @@ def tweet(url, message):
         else:
             print("unable to download image")
 
-tweet(img_url, "kitten pic!! <3")
+tweet("kitten pic!! <3")
